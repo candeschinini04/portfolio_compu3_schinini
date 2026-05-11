@@ -1,0 +1,90 @@
+@charset "utf-8";
+/* CSS Document*/
+
+@font-face {
+    font-family: truculenta;
+    src: url("font/Truculenta-VariableFont_opsz,wdth,wght.ttf") format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+* {
+    font-family: "Raleway", sans-serif;
+    margin: 0%;
+    padding: 0%;
+}
+header{
+background-color: #8a511d;
+ padding: 10px;
+}
+
+body{
+  background-color: #F2D9C4;
+}
+
+.comienzo{
+  color: #603813;
+  text-align: center;
+  font-family: 'Truculenta', monospace;
+  height: 600px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 10rem;
+}
+h1{
+  font-family: 'Truculenta', monospace;
+  padding: 10px;
+}
+.separacion{
+  background-color: #8a511d;
+  color:#F2D9C4 ;
+   font-family: 'Truculenta', monospace;
+  
+   font-size: 1rem;
+   display: flex;
+   justify-content: space-evenly;
+   align-items: center;
+   width: 100%;
+   white-space: norap;
+}
+
+p{
+  line-height: 1.5;
+  padding: 10px;
+}
+
+.yo{
+    display: flex;
+    align-items: center;
+    gap: 40px;
+width: 100%;
+flex: row;
+padding: 10px;
+  background-color: #603813;
+}
+
+
+.texto_yo{
+width: 100%;
+  color:#F2D9C4 ;
+}
+
+.DalePlay{
+  color: #1a3e05;
+}
+
+.daleplay{
+   display: flex;
+    align-items: center;
+    gap: 40px;
+width: 100%;
+flex: row;
+padding: 10px;
+  background-color:#F2D9C4 ;
+}
+
+.texto_daleplay{
+  width: 100%;
+  color:#603813;
+}
