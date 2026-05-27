@@ -24,7 +24,7 @@ body {
   text-align: right;
   font-family: 'Truculenta', monospace;
   height: 700px;
-  background-image: url(".img/pantallas_claro.png");
+  background-image: url("img/pantallas_claro.png");
   background-size: cover;
   background-position: center;
   display: block;
@@ -117,7 +117,7 @@ width: 700px;
   padding: 50px;
   background-color: #603813;
   height: 450px;
-  background-image: url(".img/pantallas_oscuro.png");
+  background-image: url("img/pantallas_oscuro.png");
   background-size: cover;
   background-position: center;
 }
@@ -132,7 +132,7 @@ width: 700px;
    padding: 50px;
   background-color: #F2D9C4;
   height: 450px;
-  background-image: url(".img/pantalla_final2.png");
+  background-image: url("img/pantalla_final2.png");
   background-size: cover;
   background-position: center;
 }
