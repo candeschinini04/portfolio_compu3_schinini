@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Trabajos universitarios</title>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=DM+Mono:wght@300;400&display=swap"
+    rel="stylesheet" />
+     <link rel="icon" type="image/png" href=".img/favicon.png">
+  <style>
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    :root {
+      --bg: #f5f0e8;
+      --ink: #1a1612;
+      --accent: #603813;
+      --muted: #9e9485;
+      --card-bg: #fff;
+      --shadow: 0 8px 40px rgba(30, 20, 10, .13);
+    }
+
+    body {
+      background: var(--bg);
+      color: var(--ink);
+      font-family: 'DM Mono', monospace;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 40px 20px;
+    }
+
+    /* Textura de grano sutil */
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+      pointer-events: none;
+      z-index: 999;
+    }
+
+    header {
+      text-align: center;
+      margin-bottom: 48px;
+    }
+
+    header h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2rem, 5vw, 3.5rem);
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      line-height: 1.1;
+    }
+
+    header h1 em {
+      font-style: italic;
+      color: var(--accent);
+    }
+
+    header p {
+      margin-top: 10px;
+      font-size: .75rem;
+      letter-spacing: .18em;
+      color: var(--muted);
+      text-transform: uppercase;
+    }
+
+    /* ───── CARRUSEL ───── */
+    .carousel-wrapper {
+      position: relative;
+      width: 100%;
+      max-width: 860px;
+    }
+
+    .carousel {
+      overflow: hidden;
+      border-radius: 4px;
+    }
+
+    .track {
+      display: flex;
+      transition: transform .55s cubic-bezier(.77, 0, .18, 1);
+      will-change: transform;
+    }
+
+    .slide {
+      min-width: 100%;
+      position: relative;
+      aspect-ratio: 4/3;
+      background: #e8e0d4;
+      overflow: hidden;
+    }
+
+    .slide img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform .6s ease;
+    }
+
+    .slide:hover img {
+      transform: scale(1.03);
+    }
+
+    /* Caption */
+    .caption {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      padding: 28px 28px 22px;
+      background: linear-gradient(transparent, rgba(20, 14, 8, .68));
+      color: #fff;
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+    }
+
+    .caption-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.2rem;
+      font-style: italic;
+    }
+
+    .caption-num {
+      font-size: .7rem;
+      letter-spacing: .2em;
+      opacity: .7;
+    }
+
+    /* Botones prev / next */
+    .btn {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      background: var(--card-bg);
+      border: none;
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: var(--shadow);
+      z-index: 10;
+      transition: background .2s, transform .2s;
+      color: var(--ink);
+      font-size: 1.1rem;
+    }
+
+    .btn:hover {
+      background: var(--accent);
+      color: #fff;
+      transform: translateY(-50%) scale(1.08);
+    }
+
+    .btn-prev {
+      left: -24px;
+    }
+
+    .btn-next {
+      right: -24px;
+    }
+
+    /* Dots */
+    .dots {
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      margin-top: 28px;
+    }
+
+    .dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--muted);
+      border: none;
+      cursor: pointer;
+      transition: background .25s, transform .25s;
+      padding: 0;
+    }
+
+    .dot.active {
+      background: var(--accent);
+      transform: scale(1.35);
+    }
+
+    /* Contador */
+    .counter {
+      text-align: center;
+      margin-top: 16px;
+      font-size: .72rem;
+      letter-spacing: .2em;
+      color: var(--muted);
+      text-transform: uppercase;
+    }
+
+    /* Thumbnails strip */
+    .thumbs {
+      display: flex;
+      gap: 8px;
+      justify-content: center;
+      margin-top: 24px;
+      flex-wrap: wrap;
+      max-width: 860px;
+    }
+
+    .thumb {
+      width: 72px;
+      height: 54px;
+      border-radius: 3px;
+      overflow: hidden;
+      cursor: pointer;
+      opacity: .45;
+      border: 2px solid transparent;
+      transition: opacity .25s, border-color .25s;
+      flex-shrink: 0;
+    }
+
+    .thumb img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .thumb.active {
+      opacity: 1;
+      border-color: var(--accent);
+    }
+
+    /* Teclado hint */
+    .hint {
+      margin-top: 18px;
+      font-size: .65rem;
+      letter-spacing: .18em;
+      color: var(--muted);
+      text-transform: uppercase;
+      text-align: center;
+    }
+
+    @media (max-width: 600px) {
+      .btn-prev {
+        left: 6px;
+      }
+
+      .btn-next {
+        right: 6px;
+      }
+
+      .thumb {
+        width: 54px;
+        height: 40px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <header>
+    <h1>Trabajos <em> universitarios</em></h1>
+    <p> más proyectos</p>
+  </header>
+
+  <div class="carousel-wrapper">
+    <div class="carousel" id="carousel">
+      <div class="track" id="track">
+
+        <!-- SLIDE 1 — reemplazá src con tu imagen -->
+        <div class="slide">
+          <img src=".img/pelicula_dis2.png" alt="poster_diseño2" />
+          <div class="caption">
+            <span class="caption-title">poster_diseño2</span>
+            <span class="caption-num">01 / 09</span>
+          </div>
+        </div>
+
+        <!-- SLIDE 2 -->
+        <div class="slide">
+          <img src=".img/revista_compu2.png" alt="Imagen 2" />
+          <div class="caption">
+            <span class="caption-title">revista_compu2</span>
+            <span class="caption-num">02 / 09</span>
+          </div>
+        </div>
+
+        <!-- SLIDE 3 -->
+        <div class="slide">
+          <img src=".img/tapa_editorial.png" alt="Imagen 3" />
+          <div class="caption">
+            <span class="caption-title">tapa_editorial</span>
+            <span class="caption-num">03 / 09</span>
+          </div>
+        </div>
+
+        <!-- SLIDE 4 -->
+        <div class="slide">
+          <img src=".img/señalador_frente.png" alt="Imagen 4" />
+          <div class="caption">
+            <span class="caption-title">señalador</span>
+            <span class="caption-num">04 / 09</span>
+          </div>
+        </div>
+
+        <!-- SLIDE 5 -->
+        <div class="slide">
+          <img src=".img/señalador_dorso.png" alt="Imagen 5" />
+          <div class="caption">
+            <span class="caption-title">señalador_trama</span>
+            <span class="caption-num">05 / 09</span>
+          </div>
+        </div>
+
+        <!-- SLIDE 6 -->
+        <div class="slide">
+          <img src=".img/medios2_01.png" alt="Imagen 6" />
+          <div class="caption">
+            <span class="caption-title">medios2</span>
+            <span class="caption-num">06 / 09</span>
+          </div>
+        </div>
+
+        <!-- SLIDE 7 -->
+        <div class="slide">
+          <img src=".img/medios2_02.png" alt="Imagen 7" />
+          <div class="caption">
+            <span class="caption-title">medios2</span>
+            <span class="caption-num">07 / 09</span>
+          </div>
+        </div>
+
+        <!-- SLIDE 8 -->
+        <div class="slide">
+          <img src=".img/medios2_03.png" alt="Imagen 8" />
+          <div class="caption">
+            <span class="caption-title">medios2</span>
+            <span class="caption-num">08 / 09</span>
+          </div>
+        </div>
+
+        <!-- SLIDE 9 -->
+        <div class="slide">
+          <img src=".img/medios2_04.png" alt="Imagen 9" />
+          <div class="caption">
+            <span class="caption-title">medios2</span>
+            <span class="caption-num">09 / 09</span>
+          </div>
+        </div>
+
+      </div><!-- /track -->
+    </div><!-- /carousel -->
+
+    <button class="btn btn-prev" id="prev" aria-label="Anterior">&#8592;</button>
+    <button class="btn btn-next" id="next" aria-label="Siguiente">&#8594;</button>
+  </div>
+
+  <!-- Dots -->
+  <div class="dots" id="dots"></div>
+
+  <!-- Contador -->
+  <div class="counter" id="counter">1 de 9</div>
+
+  <!-- Thumbnails -->
+  <div class="thumbs" id="thumbs"></div>
+
+  <p class="hint">← → teclas o swipe táctil</p>
+
+  <script>
+    const track = document.getElementById('track');
+    const slides = track.querySelectorAll('.slide');
+    const dotsEl = document.getElementById('dots');
+    const thumbsEl = document.getElementById('thumbs');
+    const counter = document.getElementById('counter');
+    const total = slides.length;
+    let current = 0;
+    let startX = 0;
+
+    // Generar dots y thumbs
+    slides.forEach((slide, i) => {
+      // dot
+      const dot = document.createElement('button');
+      dot.className = 'dot' + (i === 0 ? ' active' : '');
+      dot.setAttribute('aria-label', `Ir a imagen ${i + 1}`);
+      dot.addEventListener('click', () => goTo(i));
+      dotsEl.appendChild(dot);
+
+      // thumb
+      const th = document.createElement('div');
+      th.className = 'thumb' + (i === 0 ? ' active' : '');
+      const img = slide.querySelector('img').cloneNode();
+      th.appendChild(img);
+      th.addEventListener('click', () => goTo(i));
+      thumbsEl.appendChild(th);
+    });
+
+    function goTo(n) {
+      current = (n + total) % total;
+      track.style.transform = `translateX(-${current * 100}%)`;
+      // actualizar dots
+      dotsEl.querySelectorAll('.dot').forEach((d, i) =>
+        d.classList.toggle('active', i === current));
+      // actualizar thumbs
+      thumbsEl.querySelectorAll('.thumb').forEach((t, i) =>
+        t.classList.toggle('active', i === current));
+      // contador
+      counter.textContent = `${current + 1} de ${total}`;
+      // actualizar caption número (ya está en el HTML, opcional si querés dinámico)
+    }
+
+    document.getElementById('prev').addEventListener('click', () => goTo(current - 1));
+    document.getElementById('next').addEventListener('click', () => goTo(current + 1));
+
+    // Teclado
+    document.addEventListener('keydown', e => {
+      if (e.key === 'ArrowLeft') goTo(current - 1);
+      if (e.key === 'ArrowRight') goTo(current + 1);
+    });
+
+    // Swipe táctil
+    const car = document.getElementById('carousel');
+    car.addEventListener('touchstart', e => { startX = e.touches[0].clientX; }, { passive: true });
+    car.addEventListener('touchend', e => {
+      const dx = e.changedTouches[0].clientX - startX;
+      if (Math.abs(dx) > 40) goTo(current + (dx < 0 ? 1 : -1));
+    });
+  </script>
+</body>
+
+</html>
