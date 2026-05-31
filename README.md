@@ -19,7 +19,7 @@ contacto.html — Formulario de contacto.
 Responsive
 El sitio cuenta con un @media query para pantallas de hasta 600px en el index.html.
 El archivo carrusel.html tiene un responsive efectivo de forma nativa, ya que fue construido desde el inicio con unidades 
-flexibles (%, clamp()), max-width y propiedades como flex-wrap y object-fit: cover, sin necesidad de media queries adicionales.
+flexibles, max-width y propiedades como flex-wrap.
 
 Tamaño de pantalla de trabajo
 Resolución: 1920 x 1080 px
