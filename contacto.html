@@ -14,19 +14,22 @@
 </head>
 <body>
     <header>
-
+    <a class="inicio" href="index.html">🏠︎</a>
     </header>
     <main>
 <h1>CONTACTO</h1>
 <form method="post" action="" target="_blank" enctype="text/plain">
     <label for="Nombre">Nombre:</label>
     <input type="text" name="Nombre" id="Nombre" maxlength="30" placeholder="Nombre y Apellido" required>
+
     <label>Email:</label>
-    <input type="email" name="Email" id="Email" required>
+    <input type="email" name="Email" id="Email" maxlength="50" placeholder="gmail"required>
+
     <label>Fecha de nacimiento:</label>
-   <input type="date" name="nacimiento" id="nacimiento">
+   <input type="date" name="nacimiento" id="nacimiento" placeholder="fecha de nacimiento">
+
    <label>Deja tu consulta!</label>
-   <textarea name="Deja tu consulta!" id="Deja tu consulta!"></textarea>
+   <textarea name="Deja tu consulta!" id="Deja tu consulta!" maxlength="200" placeholder="consulta!"></textarea>
 
     <input type="submit">
 </form>

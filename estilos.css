@@ -20,9 +20,6 @@ body {
 }
 
 .comienzo {
-  color: #603813;
-  text-align: right;
-  font-family: 'Truculenta', monospace;
   height: 700px;
   background-image: url("img/pantallas_claro.png");
   background-size: cover;
@@ -37,10 +34,6 @@ body {
   margin: 0 auto;
 }
 
-h1 {
-  font-family: 'Truculenta', monospace;
-
-}
 
 .separacion {
   background-color: #8a511d;
@@ -61,7 +54,6 @@ p {
   display: flex;
   align-items: center;
   gap: 40px;
-  flex: row;
   padding: 50px;
   background-color: #603813;
   background-size: cover;
@@ -128,18 +120,13 @@ width: 700px;
 
 
 
-.juntos{
-   padding: 50px;
-  background-color: #F2D9C4;
-  height: 450px;
-  background-image: url("img/pantalla_final2.png");
-  background-size: cover;
-  background-position: center;
+.img_juntos {
+    width: 100%;
+    height: 450px;
+    object-fit: cover;
+    display: block;
 }
 
-.texto_juntos{
-   color:#603813;
-}
 
 a{
   color:#F2D9C4;
@@ -151,6 +138,9 @@ display: flex;
     justify-content: center;
 }
 
+.inicio{
+  color:#603813;
+}
 @media (max-width: 600px){
 
   .comienzo{
@@ -164,14 +154,26 @@ display: flex;
     height: auto;
   }
 
-  .yo{
-    flex-direction: column;
-    height: auto;
-    text-align: center;
+    .yo {
+    flex-direction: column !important;
+    height: auto !important;
+    text-align: center !important;
+    align-items: center !important;
+    padding: 30px 20px !important;
+    background-color: #603813 !important;
+    gap: 10px !important;
+  }
+
+  .imagen_yo {
+    width: 220px !important;
+    height: 220px !important;
+    border-radius: 20px !important;
+    object-fit: cover !important;
   }
 
   .texto_yo{
-    width: 100%;
+     width: 100% !important;
+    color: #F2D9C4 !important;
   }
 
   .dalePlay{
