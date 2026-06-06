@@ -156,6 +156,74 @@ a{
   color:#603813;
 }
 
+
+
+form {
+  max-width: 500px; 
+  margin: 40px auto;
+  padding: 30px;
+  background-color: #603813; 
+  border-radius: 15px;
+  display: flex;
+  flex-direction: column; 
+  gap: 12px; 
+  box-sizing: border-box;
+}
+
+h1 {
+  text-align: center;
+  color: #603813;
+  margin-top: 30px;
+}
+
+form label {
+  color: #F2D9C4; 
+  font-weight: 600;
+  margin-top: 8px;
+}
+
+
+form input[type="text"],
+form input[type="email"],
+form input[type="date"],
+form textarea {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #bc793b;
+  border-radius: 8px;
+  background-color: #F2D9C4;
+  color: #603813;
+  font-size: 16px;
+  box-sizing: border-box; 
+}
+
+form textarea {
+  height: 120px;
+  resize: none; 
+}
+
+
+form input[type="submit"] {
+  background-color: #bc793b;
+  color: #ffffff;
+  padding: 12px;
+  border: none;
+  border-radius: 8px;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  margin-top: 15px;
+  transition: background-color 0.3s;
+}
+
+form input[type="submit"]:hover {
+  background-color: #8a511d;
+}
+
+
+
+
+
 @media (max-width: 600px){
 
   .comienzo{
@@ -221,8 +289,18 @@ a{
     padding: 10px;
   }
 
- .separacion p:nth-child(n+4) {
+ .separacion p:nth-child(n+3) {
     display: none;
 }
 
+form {
+    width: 90%; 
+    margin: 20px auto;
+    padding: 20px;
+  }
+  
+  h1 {
+    font-size: 28px;
+    margin-top: 20px;
+  }
 }
