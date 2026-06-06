@@ -35,6 +35,21 @@ body {
 }
 
 
+.contacto{
+  text-align: left;
+  position: fixed;
+  background-color: #bc793b;
+  display: flex;
+  gap: 20px;
+  padding: 5px;
+}
+
+.contacto:hover a {
+  color: #ffffff; 
+}
+
+
+
 .separacion {
   background-color: #8a511d;
   color: #F2D9C4;
@@ -42,8 +57,12 @@ body {
   justify-content: space-evenly;
   white-space: norap;
    padding: 10px;
-
 }
+.separacion:hover a {
+  color: #ffffff; 
+}
+
+
 
 p {
   line-height: 1.5;
@@ -132,15 +151,11 @@ a{
   color:#F2D9C4;
 }
 
-.mas_proyectos{
-  color:#603813;
-display: flex;
-    justify-content: center;
-}
 
 .inicio{
   color:#603813;
 }
+
 @media (max-width: 600px){
 
   .comienzo{
@@ -150,47 +165,50 @@ display: flex;
   }
 
   .letra{
-    width: 100%;
+    width: 70%;
     height: auto;
   }
 
     .yo {
-    flex-direction: column !important;
-    height: auto !important;
-    text-align: center !important;
-    align-items: center !important;
-    padding: 30px 20px !important;
-    background-color: #603813 !important;
-    gap: 10px !important;
+    flex-direction: column;
+    height: auto;
+    text-align: center;
+    align-items: center;
+    padding: 30px 20px;
+    background-color: #603813;
+    gap: 10px;
   }
 
   .imagen_yo {
-    width: 220px !important;
-    height: 220px !important;
-    border-radius: 20px !important;
-    object-fit: cover !important;
+    width: 220px;
+    height: 220px;
+    border-radius: 20px;
+    object-fit: cover;
   }
 
   .texto_yo{
-     width: 100% !important;
-    color: #F2D9C4 !important;
+     width: 100%;
+    color: #F2D9C4;
   }
 
-  .dalePlay{
-    flex-direction: column;
-  }
+ .dalePlay {
+  display: flex; 
+  flex-direction: column-reverse; 
+}
 
-  .texto_daleplay{
-    width: 100%;
-  }
+.texto_daleplay {
+  width: 100%;
+}
 
-  .dalePlay img{
-    width: 100%;
-    height: auto;
-  }
+.dalePlay img {
+  width: 100%;
+  height: auto;
+}
 
   .estrella_proyecto{
-    flex-direction: column;
+     display: flex; 
+  flex-direction: column-reverse;
+  padding: 10%;
   }
 
   .texto_estrella{
@@ -203,9 +221,8 @@ display: flex;
     padding: 10px;
   }
 
-  .separacion{
-    flex-wrap: wrap;
-    text-align: center;
-  }
+ .separacion p:nth-child(n+4) {
+    display: none;
+}
 
 }

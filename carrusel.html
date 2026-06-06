@@ -39,7 +39,7 @@
       padding: 40px 20px;
     }
 
-    /* Textura de grano sutil */
+    
     body::before {
       content: '';
       position: fixed;
@@ -75,7 +75,7 @@
       text-transform: uppercase;
     }
 
-    /* ───── CARRUSEL ───── */
+    
     .carousel-wrapper {
       position: relative;
       width: 100%;
@@ -113,7 +113,7 @@
       transform: scale(1.03);
     }
 
-    /* Caption */
+    
     .caption {
       position: absolute;
       bottom: 0;
@@ -139,7 +139,7 @@
       opacity: .7;
     }
 
-    /* Botones prev / next */
+    
     .btn {
       position: absolute;
       top: 50%;
@@ -174,7 +174,7 @@
       right: -24px;
     }
 
-    /* Dots */
+   
     .dots {
       display: flex;
       justify-content: center;
@@ -198,7 +198,7 @@
       transform: scale(1.35);
     }
 
-    /* Contador */
+   
     .counter {
       text-align: center;
       margin-top: 16px;
@@ -208,7 +208,7 @@
       text-transform: uppercase;
     }
 
-    /* Thumbnails strip */
+    
     .thumbs {
       display: flex;
       gap: 8px;
@@ -242,7 +242,6 @@
       border-color: var(--accent);
     }
 
-    /* Teclado hint */
     .hint {
       margin-top: 18px;
       font-size: .65rem;
@@ -285,7 +284,7 @@
     <div class="carousel" id="carousel">
       <div class="track" id="track">
 
-        <!-- SLIDE 1 — reemplazá src con tu imagen -->
+        
         <div class="slide">
           <img src="img/pelicula_dis2.png" alt="poster_diseño2" />
           <div class="caption">
@@ -294,7 +293,7 @@
           </div>
         </div>
 
-        <!-- SLIDE 2 -->
+        
         <div class="slide">
           <img src="img/revista_compu2.png" alt="Imagen 2" />
           <div class="caption">
@@ -303,7 +302,7 @@
           </div>
         </div>
 
-        <!-- SLIDE 3 -->
+       
         <div class="slide">
           <img src="img/tapa_editorial.png" alt="Imagen 3" />
           <div class="caption">
@@ -312,7 +311,7 @@
           </div>
         </div>
 
-        <!-- SLIDE 4 -->
+        
         <div class="slide">
           <img src="img/señalador_frente.png" alt="Imagen 4" />
           <div class="caption">
@@ -321,7 +320,7 @@
           </div>
         </div>
 
-        <!-- SLIDE 5 -->
+        
         <div class="slide">
           <img src="img/señalador_dorso.png" alt="Imagen 5" />
           <div class="caption">
@@ -330,7 +329,7 @@
           </div>
         </div>
 
-        <!-- SLIDE 6 -->
+        
         <div class="slide">
           <img src="img/medios2_01.png" alt="Imagen 6" />
           <div class="caption">
@@ -339,7 +338,7 @@
           </div>
         </div>
 
-        <!-- SLIDE 7 -->
+        
         <div class="slide">
           <img src="img/medios2_02.png" alt="Imagen 7" />
           <div class="caption">
@@ -348,7 +347,7 @@
           </div>
         </div>
 
-        <!-- SLIDE 8 -->
+       
         <div class="slide">
           <img src="img/medios2_03.png" alt="Imagen 8" />
           <div class="caption">
@@ -357,7 +356,7 @@
           </div>
         </div>
 
-        <!-- SLIDE 9 -->
+        
         <div class="slide">
           <img src="img/medios2_04.png" alt="Imagen 9" />
           <div class="caption">
@@ -366,20 +365,20 @@
           </div>
         </div>
 
-      </div><!-- /track -->
-    </div><!-- /carousel -->
+      </div>
+    </div>
 
     <button class="btn btn-prev" id="prev" aria-label="Anterior">&#8592;</button>
     <button class="btn btn-next" id="next" aria-label="Siguiente">&#8594;</button>
   </div>
 
-  <!-- Dots -->
+  
   <div class="dots" id="dots"></div>
 
-  <!-- Contador -->
+  
   <div class="counter" id="counter">1 de 9</div>
 
-  <!-- Thumbnails -->
+  
   <div class="thumbs" id="thumbs"></div>
 
   <p class="hint">← → teclas o swipe táctil</p>
@@ -394,16 +393,16 @@
     let current = 0;
     let startX = 0;
 
-    // Generar dots y thumbs
+    
     slides.forEach((slide, i) => {
-      // dot
+      
       const dot = document.createElement('button');
       dot.className = 'dot' + (i === 0 ? ' active' : '');
       dot.setAttribute('aria-label', `Ir a imagen ${i + 1}`);
       dot.addEventListener('click', () => goTo(i));
       dotsEl.appendChild(dot);
 
-      // thumb
+      
       const th = document.createElement('div');
       th.className = 'thumb' + (i === 0 ? ' active' : '');
       const img = slide.querySelector('img').cloneNode();
@@ -415,27 +414,27 @@
     function goTo(n) {
       current = (n + total) % total;
       track.style.transform = `translateX(-${current * 100}%)`;
-      // actualizar dots
+    
       dotsEl.querySelectorAll('.dot').forEach((d, i) =>
         d.classList.toggle('active', i === current));
-      // actualizar thumbs
+      
       thumbsEl.querySelectorAll('.thumb').forEach((t, i) =>
         t.classList.toggle('active', i === current));
-      // contador
+      
       counter.textContent = `${current + 1} de ${total}`;
-      // actualizar caption número (ya está en el HTML, opcional si querés dinámico)
+      
     }
 
     document.getElementById('prev').addEventListener('click', () => goTo(current - 1));
     document.getElementById('next').addEventListener('click', () => goTo(current + 1));
 
-    // Teclado
+    
     document.addEventListener('keydown', e => {
       if (e.key === 'ArrowLeft') goTo(current - 1);
       if (e.key === 'ArrowRight') goTo(current + 1);
     });
 
-    // Swipe táctil
+    
     const car = document.getElementById('carousel');
     car.addEventListener('touchstart', e => { startX = e.touches[0].clientX; }, { passive: true });
     car.addEventListener('touchend', e => {
