@@ -2,13 +2,17 @@
 <html lang="es">
 
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Trabajos universitarios</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="estilos.css" type="text/css">
+  <link rel="stylesheet" href="estilos.css" type="text/css">
+  <meta charset="utf-8" />
+  <title>TP de Schinini Candela</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link
     href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=DM+Mono:wght@300;400&display=swap"
     rel="stylesheet" />
-     <link rel="icon" type="image/png" href="img/favicon.png">
+  <link rel="icon" type="image/png" href="img/favicon.png">
   <style>
     *,
     *::before,
@@ -36,10 +40,9 @@
       flex-direction: column;
       align-items: center;
       justify-content: center;
-      padding: 40px 20px;
     }
 
-    
+
     body::before {
       content: '';
       position: fixed;
@@ -54,28 +57,17 @@
       margin-bottom: 48px;
     }
 
-    header h1 {
+    h1 {
       font-family: 'Playfair Display', serif;
       font-size: clamp(2rem, 5vw, 3.5rem);
       font-weight: 700;
       letter-spacing: -0.02em;
       line-height: 1.1;
+      color: #603813;
+      padding: 20px;
     }
 
-    header h1 em {
-      font-style: italic;
-      color: var(--accent);
-    }
 
-    header p {
-      margin-top: 10px;
-      font-size: .75rem;
-      letter-spacing: .18em;
-      color: var(--muted);
-      text-transform: uppercase;
-    }
-
-    
     .carousel-wrapper {
       position: relative;
       width: 100%;
@@ -113,7 +105,7 @@
       transform: scale(1.03);
     }
 
-    
+
     .caption {
       position: absolute;
       bottom: 0;
@@ -139,7 +131,7 @@
       opacity: .7;
     }
 
-    
+
     .btn {
       position: absolute;
       top: 50%;
@@ -174,7 +166,7 @@
       right: -24px;
     }
 
-   
+
     .dots {
       display: flex;
       justify-content: center;
@@ -198,7 +190,7 @@
       transform: scale(1.35);
     }
 
-   
+
     .counter {
       text-align: center;
       margin-top: 16px;
@@ -208,7 +200,7 @@
       text-transform: uppercase;
     }
 
-    
+
     .thumbs {
       display: flex;
       gap: 8px;
@@ -251,8 +243,8 @@
       text-align: center;
     }
 
-    .inicio{
-      color:#603813;
+    .inicio {
+      color: #603813;
     }
 
     @media (max-width: 600px) {
@@ -275,16 +267,20 @@
 <body>
 
   <header>
-     <a class="inicio" href="index.html">🏠︎</a>
-    <h1>Trabajos <em> universitarios</em></h1>
-    <p> más proyectos</p>
+    <section class="contacto">
+      <a href="index.html">🏠︎</a>
+      <a href="contacto.html">contactame</a>
+      <a href="carrusel.html">más proyectos</a>
+      <a href="servicios.html">Servicios</a>
+    </section>
   </header>
+  <h1>Trabajos universitarios</h1>
 
   <div class="carousel-wrapper">
     <div class="carousel" id="carousel">
       <div class="track" id="track">
 
-        
+
         <div class="slide">
           <img src="img/pelicula_dis2.png" alt="poster_diseño2" />
           <div class="caption">
@@ -293,7 +289,7 @@
           </div>
         </div>
 
-        
+
         <div class="slide">
           <img src="img/revista_compu2.png" alt="Imagen 2" />
           <div class="caption">
@@ -302,7 +298,7 @@
           </div>
         </div>
 
-       
+
         <div class="slide">
           <img src="img/tapa_editorial.png" alt="Imagen 3" />
           <div class="caption">
@@ -311,7 +307,7 @@
           </div>
         </div>
 
-        
+
         <div class="slide">
           <img src="img/señalador_frente.png" alt="Imagen 4" />
           <div class="caption">
@@ -320,7 +316,7 @@
           </div>
         </div>
 
-        
+
         <div class="slide">
           <img src="img/señalador_dorso.png" alt="Imagen 5" />
           <div class="caption">
@@ -329,7 +325,7 @@
           </div>
         </div>
 
-        
+
         <div class="slide">
           <img src="img/medios2_01.png" alt="Imagen 6" />
           <div class="caption">
@@ -338,7 +334,7 @@
           </div>
         </div>
 
-        
+
         <div class="slide">
           <img src="img/medios2_02.png" alt="Imagen 7" />
           <div class="caption">
@@ -347,7 +343,7 @@
           </div>
         </div>
 
-       
+
         <div class="slide">
           <img src="img/medios2_03.png" alt="Imagen 8" />
           <div class="caption">
@@ -356,7 +352,7 @@
           </div>
         </div>
 
-        
+
         <div class="slide">
           <img src="img/medios2_04.png" alt="Imagen 9" />
           <div class="caption">
@@ -372,13 +368,13 @@
     <button class="btn btn-next" id="next" aria-label="Siguiente">&#8594;</button>
   </div>
 
-  
+
   <div class="dots" id="dots"></div>
 
-  
+
   <div class="counter" id="counter">1 de 9</div>
 
-  
+
   <div class="thumbs" id="thumbs"></div>
 
   <p class="hint">← → teclas o swipe táctil</p>
@@ -393,16 +389,16 @@
     let current = 0;
     let startX = 0;
 
-    
+
     slides.forEach((slide, i) => {
-      
+
       const dot = document.createElement('button');
       dot.className = 'dot' + (i === 0 ? ' active' : '');
       dot.setAttribute('aria-label', `Ir a imagen ${i + 1}`);
       dot.addEventListener('click', () => goTo(i));
       dotsEl.appendChild(dot);
 
-      
+
       const th = document.createElement('div');
       th.className = 'thumb' + (i === 0 ? ' active' : '');
       const img = slide.querySelector('img').cloneNode();
@@ -414,27 +410,27 @@
     function goTo(n) {
       current = (n + total) % total;
       track.style.transform = `translateX(-${current * 100}%)`;
-    
+
       dotsEl.querySelectorAll('.dot').forEach((d, i) =>
         d.classList.toggle('active', i === current));
-      
+
       thumbsEl.querySelectorAll('.thumb').forEach((t, i) =>
         t.classList.toggle('active', i === current));
-      
+
       counter.textContent = `${current + 1} de ${total}`;
-      
+
     }
 
     document.getElementById('prev').addEventListener('click', () => goTo(current - 1));
     document.getElementById('next').addEventListener('click', () => goTo(current + 1));
 
-    
+
     document.addEventListener('keydown', e => {
       if (e.key === 'ArrowLeft') goTo(current - 1);
       if (e.key === 'ArrowRight') goTo(current + 1);
     });
 
-    
+
     const car = document.getElementById('carousel');
     car.addEventListener('touchstart', e => { startX = e.touches[0].clientX; }, { passive: true });
     car.addEventListener('touchend', e => {
